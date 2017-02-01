@@ -18,6 +18,6 @@ public class GreetingTest{
     @Test
     public void evaluateOutput() {
         Greeting.main(new String[0]);
-        assertEquals("Hello, World!\n", outContent.toString());
+        assertEquals("Hello, Mikeal!\n", outContent.toString());
     }
 } 

@@ -10,13 +10,14 @@
 
 JUNIT_JAR = /usr/share/java/junit-4.10.jar
 HAMCREST_JAR = /usr/share/java/hamcrest/core-1.1.jar
+
 default:
 	@echo "usage: make target"
 	@echo "available targets: compile, test, clean"
 
 compile: Greeting.java GreetingTest.java
 	javac -cp .:$(JUNIT_JAR) GreetingTest.java
-	javac -cp .:$(ORG_APACHE_JAR) Greeting.java
+	javac Greeting.java
 
 clean:
 	rm -f Greeting.class

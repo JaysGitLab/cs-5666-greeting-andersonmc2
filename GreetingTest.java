@@ -3,7 +3,7 @@ import org.junit.*;
 import java.io.*;
 
 public class GreetingTest{
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();    
+    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();    
     PrintStream oldSystOut = System.out;
     @Before
     public void setUpStreams() {
@@ -16,8 +16,13 @@ public class GreetingTest{
     }
 
     @Test
-    public void evaluateOutput() {
+    public void evaluateOutput() throws IOException {
+        String[] name = new String[] {"Bobby"};
+        Greeting.main(name);
+       // assertEquals("Hello, Bobby\n", outContent.toString());
         Greeting.main(new String[0]);
-        assertEquals("Hello, Mikeal!\n", outContent.toString());
+        assertEquals("Hello, Bobby\nHello, Mikeal!\n", outContent.toString());
+
+
     }
 } 

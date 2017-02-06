@@ -17,7 +17,7 @@ public class GreetingTest{
 
     @Test
     public void evaluateOutput() throws IOException {
-        String[] name = new String[] {"Bobby"};
+        String[] name = new String[] {"bobby"};
         Greeting.main(name);
        // assertEquals("Hello, Bobby\n", outContent.toString());
         Greeting.main(new String[0]);

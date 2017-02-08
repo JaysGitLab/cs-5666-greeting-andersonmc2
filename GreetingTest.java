@@ -1,6 +1,7 @@
 import static org.junit.Assert.assertEquals;
 import org.junit.*;
 import java.io.*;
+import org.apache.commons.cli.*;
 
 public class GreetingTest{
     private ByteArrayOutputStream outContent = new ByteArrayOutputStream();    
@@ -16,13 +17,27 @@ public class GreetingTest{
     }
 
     @Test
-    public void evaluateOutput() throws IOException {
-        String[] name = new String[] {"bobby"};
-        Greeting.main(name);
-       // assertEquals("Hello, Bobby\n", outContent.toString());
+    public void noInputTest() throws ParseException{
         Greeting.main(new String[0]);
-        assertEquals("Hello, Bobby\nHello, Mikeal!\n", outContent.toString());
+        assertEquals("Hello, Mikeal!\n", outContent.toString());
+    }
 
+    @Test
+    public void evaluateOutput1() throws ParseException {
+        String[] name = new String[] {"Bobby"};
+        Greeting.main(name);
+        assertEquals("Hello, Bobby\n", outContent.toString());
+    }
 
+    @Test
+    public void evaluateOutput2() throws ParseException{
+        Greeting.main(new String[] {"-me", "Hal", "Bowman"});
+        assertEquals("Hello, Bowman\n", outContent.toString());
+    }
+
+   @Test
+    public void evaluateOutput3() throws ParseException{
+        Greeting.main(new String[] {"-me", "Hal"});
+        assertEquals("Hello, Mikeal!\n", outContent.toString());
     }
 } 

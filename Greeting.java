@@ -12,7 +12,7 @@ public class Greeting{
         
         if(cmd.hasOption("me")) {
             if(cmd.getOptionValue("me") != null){
-                myName = cmd.getOptionValue("me");
+                myName = capitalize(cmd.getOptionValue("me"));
             }
             else{
                 System.out.println("Invalid parameter!");
@@ -21,7 +21,7 @@ public class Greeting{
             if(otherArgs.length != 0){
                 System.out.print("Hello, ");
                 for(int i = 0; i < otherArgs.length;i++){
-                    System.out.print(otherArgs[i]);                
+                    System.out.print(capitalize(otherArgs[i]));                
                     if(i < otherArgs.length-1)
                         System.out.print(" ");
                 }
@@ -35,7 +35,7 @@ public class Greeting{
             if(otherArgs.length != 0){
                 System.out.print("Hello, ");
                 for(int i = 0; i < otherArgs.length;i++){
-                    System.out.print(otherArgs[i]);
+                    System.out.print(capitalize(otherArgs[i]));
                     if(i < otherArgs.length-1)
                         System.out.print(" ");                
                 }
@@ -48,6 +48,9 @@ public class Greeting{
     }
     public String getName(){
         return myName;
+    }
+    public static String capitalize(String str){
+        return str.substring(0,1).toUpperCase() + str.substring(1).toLowerCase();
     }
 }
 

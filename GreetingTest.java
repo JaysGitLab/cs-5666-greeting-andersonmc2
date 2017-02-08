@@ -29,6 +29,14 @@ public class GreetingTest{
         assertEquals("Hello, Bobby\n", outContent.toString());
     }
 
+   @Test
+    public void evaluateOutput1lower() throws ParseException {
+        String[] name = new String[] {"bobby"};
+        Greeting.main(name);
+        assertEquals("Hello, Bobby\n", outContent.toString());
+    }
+ 
+
     @Test
     public void evaluateOutput2() throws ParseException{
         Greeting.main(new String[] {"-me", "Hal", "Bowman"});

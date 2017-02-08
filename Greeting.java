@@ -2,6 +2,7 @@ import org.apache.commons.cli.*;
 
 public class Greeting{
     private static String myName;
+    private static String theirName;
     public static void main(String[] args) throws ParseException{
         Options options = new Options();
         options.addOption("me", true, "name machine");
@@ -19,16 +20,20 @@ public class Greeting{
             }
             
             if(otherArgs.length != 0){
-                System.out.print("Hello, ");
+                String tempName = "";
                 for(int i = 0; i < otherArgs.length;i++){
-                    System.out.print(capitalize(otherArgs[i]));                
+                    tempName += capitalize(otherArgs[i]);                
                     if(i < otherArgs.length-1)
-                        System.out.print(" ");
+                        tempName += " ";
                 }
-                System.out.print("\n");
+                theirName = tempName;
+                System.out.print("Hello, " + getTheirName() + ". My name is " 
+                                + getName() + ". How are you today, " 
+                                + getTheirName() + "?\n");
             }
             else{
-                System.out.println("Hello, Mikeal!");
+                System.out.print("Hello, Mikeal. My name is " + getName() 
+                                    + ". How are you today, Mikeal?\n");
             }
         }
         else {
@@ -46,8 +51,11 @@ public class Greeting{
             }
         }
     }
-    public String getName(){
+    public static String getName(){
         return myName;
+    }
+    public static String getTheirName(){
+        return theirName;
     }
     public static String capitalize(String str){
         return str.substring(0,1).toUpperCase() + str.substring(1).toLowerCase();

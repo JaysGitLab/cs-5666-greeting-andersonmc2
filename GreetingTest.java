@@ -35,17 +35,17 @@ public class GreetingTest{
         Greeting.main(name);
         assertEquals("Hello, Bobby\n", outContent.toString());
     }
- 
-
-    @Test
-    public void evaluateOutput2() throws ParseException{
-        Greeting.main(new String[] {"-me", "Hal", "Bowman"});
-        assertEquals("Hello, Bowman\n", outContent.toString());
-    }
 
    @Test
-    public void evaluateOutput3() throws ParseException{
+    public void evaluateOutput2() throws ParseException{
         Greeting.main(new String[] {"-me", "Hal"});
-        assertEquals("Hello, Mikeal!\n", outContent.toString());
+        assertEquals("Hello, Mikeal. My name is Hal. How are you today, Mikeal?\n", outContent.toString());
     }
+
+    @Test
+    public void evaluateOutput3() throws ParseException{
+        Greeting.main(new String[] {"-me", "Hal", "dave"});
+        assertEquals("Hello, Dave. My name is Hal. How are you today, Dave?\n", outContent.toString());
+    }
+
 } 
